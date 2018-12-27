@@ -3,7 +3,7 @@ use Time::HiRes qw(usleep);
 
 
 # Settings
-my $OrgSalt = "NYLVfq7kKUc9Aj7KtddMs7ECZV3dloBYRN2wTQigMlQfmoyHqu";
+my $OrgSalt = "Please replace this value with unique long random string! E.g.: NYLVfq7kKUc9Aj7KtddMs7ECZV3dloBYRN2wTQigMlQfmoyHqu";
 my $MinLength = 10;
 my $scryptNLog2 = 17;
 my $UsersFile = "vpn-users.txt";
