@@ -29,7 +29,7 @@ function calculate() {
     }
     scrypt(StringToBytesArray(document.calculator.pass.value.trim()+OrgSalt), StringToBytesArray(document.calculator.user.value.trim().toLowerCase()), Math.pow(2, scryptNLog2), 8, 1, 32, function(error, progress, key) {
         if (error) {
-            alert("Error: " + error);
+            alert("Error: "+error);
         } else if (key) {
             var hexkey = "";
             for (var i = 0; i < key.length; ++i) {
@@ -37,6 +37,7 @@ function calculate() {
                 hexkey += key[i].toString(16);
             }
             document.calculator.hash.value = hexkey;
+            document.calculator.line.value = document.calculator.user.value.trim().toLowerCase()+" "+hexkey;
         } else {
             document.calculator.hash.value = Math.floor(progress*100)+"% completed";
         }
@@ -538,6 +539,7 @@ Username: <input type="text" name="user" style="width: 100%"><br /><br />
 Password: <input type="password" name="pass" style="width: 100%"><br /><br />
 Confirm password: <input type="password" name="pass2" style="width: 100%"><br /><br />
 Hash: <input type="text" readonly name="hash" style="width: 100%"><br /><br />
+Line: <input type="text" readonly name="line" style="width: 100%"><br /><br />
 <input type="submit" name="submit" value="Calculate" style="width: 100%">
 </form>
 </body>
