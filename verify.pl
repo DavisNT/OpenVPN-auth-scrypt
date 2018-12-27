@@ -56,9 +56,9 @@ close $fh;
 
 foreach (@userents) {
   my @userent = split(/\s/, $_);
-  if (lc($userent[0]) eq $user) {
+  if (lc($userent[0]) eq $user && length($userent[1]) == 64) {
     my $start = time();
-    if ($userent[1] eq scrypt_hex($pass.$OrgSalt, $user, 2**$scryptNLog2, 8, 1, 32)) {
+    if (lc($userent[1]) eq scrypt_hex($pass.$OrgSalt, $user, 2**$scryptNLog2, 8, 1, 32)) {
       exit 0;
     } else {
       my $elapsed = (time()-$start)*1000000;
