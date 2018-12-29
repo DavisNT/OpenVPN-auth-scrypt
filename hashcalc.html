@@ -26,6 +26,10 @@ function calculate() {
         alert("Username must NOT be empty.");
         return;
     }
+    if(!document.calculator.user.value.trim().match(/^[A-Za-z0-9_\-\.@]+$/g)) {
+        alert("Username can contain only: \n* letters, \n* digits, \n* characters: _ - . @\n\nUsername cannot contain space character.");
+        return;
+    }
     if(document.calculator.pass.value.trim().length < MinLength) {
         alert("Password must be at least "+MinLength+" characters long (leading/trailing spaces are removed).");
         return;
