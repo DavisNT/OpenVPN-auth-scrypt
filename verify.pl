@@ -61,6 +61,14 @@ if ($ARGV[0] eq "--measure-time") {
 my $user = $ENV{"username"};
 my $pass = $ENV{"password"};
 
+if ($ARGV[0] ne "" && -f $ARGV[0]) {
+  open my $fh, '<', $ARGV[0];
+  chomp(my @creds = <$fh>);
+  close $fh;
+  $user = $creds[0];
+  $pass = $creds[1];
+}
+
 my $cn = lc($ENV{"common_name"});
 
 $user = lc($user);
