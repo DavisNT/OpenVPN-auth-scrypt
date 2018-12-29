@@ -751,17 +751,21 @@ function StringToBytesArray(str) {
 // Code from https://github.com/YuzuJS/setImmediate/blob/master/setImmediate.js ENDS
 
 
+if(OrgSalt == "Please replace this value with unique long random string! E.g.: NYLVfq7kKUc9Aj7KtddMs7ECZV3dloBYRN2wTQigMlQfmoyHqu") {
+    document.write('<p style="color: red; font-weight: bold;">WARNING! Default Organization Salt is used. <br />If you are setting up OpenVPN-auth-scrypt for your OpenVPN instance, please read the <a href="https://github.com/DavisNT/OpenVPN-auth-scrypt/blob/master/README.md" target="_blank">README.md</a> and set OrgSalt to a random value used for your setup! <br />If you are trying to get access to existing VPN and have downloaded this script from GitHub to generate hash for your password, then please contact administrator of the VPN to get the proper script!</p>');
+}
+
 </script>
 <form name="calculator" action="javascript:calculate()">
-Username: <input type="text" name="user" style="width: 100%"><br /><br />
-Password: <input type="password" name="pass" style="width: 100%"><br /><br />
-Confirm password: <input type="password" name="pass2" style="width: 100%"><br /><br />
-Hash: <input type="text" readonly name="hash" style="width: 100%"><br /><br />
-Line: <input type="text" readonly name="line" style="width: 100%"><br /><br />
-<input type="submit" name="submit" value="Calculate" style="width: 100%">
+Username: <input type="text" name="user" style="width: 100%;"><br /><br />
+Password: <input type="password" name="pass" style="width: 100%;"><br /><br />
+Confirm password: <input type="password" name="pass2" style="width: 100%;"><br /><br />
+Hash: <input type="text" readonly name="hash" style="width: 100%;"><br /><br />
+Line: <input type="text" readonly name="line" style="width: 100%;"><br /><br />
+<input type="submit" name="submit" value="Calculate" style="width: 100%;">
 </form>
 <br /><br />
-<p align="center" style="font-size: small">
+<p align="center" style="font-size: small;">
 Copyright &copy; 2018 Dāvis Mošenkovs<br /><br />
 <a href="https://github.com/DavisNT/OpenVPN-auth-scrypt" target="_blank">GitHub page</a>
 </p>
