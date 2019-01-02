@@ -30,6 +30,13 @@ function calculate() {
         alert("Username can contain only: \n* letters, \n* digits, \n* characters: _ - . @\n\nUsername cannot contain space character.");
         return;
     }
+    var passtocheck = document.calculator.pass.value.trim();
+    for (var i = 0; i < passtocheck.length; ++i) {
+        if(passtocheck.charCodeAt(i) < 32 || passtocheck.charCodeAt(i) > 126) {
+            alert("Password can contain only ASCII characters. \nI.e. letters with diacritical marks (and some other characters) cannot be used.");
+            return;
+        }
+    }
     if(document.calculator.pass.value.trim().length < MinLength) {
         alert("Password must be at least "+MinLength+" characters long (leading/trailing spaces are removed).");
         return;
