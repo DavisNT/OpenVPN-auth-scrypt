@@ -34,21 +34,36 @@ function calculate() {
         alert("Password must be at least "+MinLength+" characters long (leading/trailing spaces are removed).");
         return;
     }
-    scrypt(StringToBytesArray(document.calculator.pass.value.trim()+OrgSalt), StringToBytesArray(document.calculator.user.value.trim().toLowerCase()), Math.pow(2, scryptNLog2), 8, 1, 32, function(error, progress, key) {
-        if (error) {
-            alert("Error: "+error);
-        } else if (key) {
-            var hexkey = "";
-            for (var i = 0; i < key.length; ++i) {
-                if(key[i] < 16) hexkey += "0";
-                hexkey += key[i].toString(16);
+    document.calculator.user.readOnly = true;
+    document.calculator.pass.readOnly = true;
+    document.calculator.pass2.readOnly = true;
+    try {
+        scrypt(StringToBytesArray(document.calculator.pass.value.trim()+OrgSalt), StringToBytesArray(document.calculator.user.value.trim().toLowerCase()), Math.pow(2, scryptNLog2), 8, 1, 32, function(error, progress, key) {
+            if (error) {
+                throw error;
+            } else if (key) {
+                var hexkey = "";
+                for (var i = 0; i < key.length; ++i) {
+                    if(key[i] < 16) hexkey += "0";
+                    hexkey += key[i].toString(16);
+                }
+                document.calculator.hash.value = hexkey;
+                document.calculator.line.value = document.calculator.user.value.trim().toLowerCase()+" "+hexkey;
+                document.calculator.user.readOnly = false;
+                document.calculator.pass.readOnly = false;
+                document.calculator.pass2.readOnly = false;
+            } else {
+                document.calculator.hash.value = Math.floor(progress*100)+"% completed";
             }
-            document.calculator.hash.value = hexkey;
-            document.calculator.line.value = document.calculator.user.value.trim().toLowerCase()+" "+hexkey;
-        } else {
-            document.calculator.hash.value = Math.floor(progress*100)+"% completed";
-        }
-    });
+        });
+    } catch (e) {
+        document.calculator.hash.value = "";
+        document.calculator.line.value = "";
+        document.calculator.user.readOnly = false;
+        document.calculator.pass.readOnly = false;
+        document.calculator.pass2.readOnly = false;
+        alert("Unexpected error occurred: \n"+e);
+    }
 }
 
 function StringToBytesArray(str) {
