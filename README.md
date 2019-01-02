@@ -5,7 +5,7 @@ for [OpenVPN](https://openvpn.net/) that takes usernames and
 [scrypt](https://en.wikipedia.org/wiki/Scrypt) 
 encrypted/hashed passwords from a text file.
 
-Copyright (c) 2018 Davis Mosenkovs
+Copyright (c) 2018-2019 Davis Mosenkovs
 
 ## Introduction
 

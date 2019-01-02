@@ -3,7 +3,7 @@
 # OpenVPN-auth-scrypt
 # https://github.com/DavisNT/OpenVPN-auth-scrypt
 #
-# Copyright (c) 2018 Dāvis Mošenkovs
+# Copyright (c) 2018-2019 Dāvis Mošenkovs
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
