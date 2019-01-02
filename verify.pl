@@ -1,4 +1,4 @@
-#!/usr/bin/perl -t
+#!/usr/bin/perl -T
 
 # OpenVPN-auth-scrypt
 # https://github.com/DavisNT/OpenVPN-auth-scrypt
