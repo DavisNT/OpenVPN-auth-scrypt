@@ -44,6 +44,7 @@ function calculate() {
     document.calculator.user.readOnly = true;
     document.calculator.pass.readOnly = true;
     document.calculator.pass2.readOnly = true;
+    document.calculator.submit.disabled = true;
     try {
         scrypt(StringToBytesArray(document.calculator.pass.value.trim()+OrgSalt), StringToBytesArray(document.calculator.user.value.trim().toLowerCase()), Math.pow(2, scryptNLog2), 8, 1, 32, function(error, progress, key) {
             if (error) {
@@ -59,6 +60,7 @@ function calculate() {
                 document.calculator.user.readOnly = false;
                 document.calculator.pass.readOnly = false;
                 document.calculator.pass2.readOnly = false;
+                document.calculator.submit.disabled = false;
             } else {
                 document.calculator.hash.value = Math.floor(progress*100)+"% completed";
             }
@@ -69,6 +71,7 @@ function calculate() {
         document.calculator.user.readOnly = false;
         document.calculator.pass.readOnly = false;
         document.calculator.pass2.readOnly = false;
+        document.calculator.submit.disabled = false;
         alert("Unexpected error occurred: \n"+e);
     }
 }
